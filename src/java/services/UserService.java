@@ -13,18 +13,19 @@ public class UserService
     
     public void addUser(User user)
     {
-        userDB.insert(user.getEmail(), user.isActive(), user.getFirstName(),
-                      user.getLastName(), user.getPassword(), user.getRole());
+//        userDB.insert(user.getEmail(), user.isActive(), user.getFirstName(),
+//                      user.getLastName(), user.getPassword(), user.getRole());
     }
     
     public User[] getAll()
     {
-        return userDB.get(WILD_CARD);
+        return null;
+//        return userDB.get(WILD_CARD);
     }
     
     public void removeUser(User user)
     {
-        userDB.remove(user.getEmail());
+//        userDB.remove(user.getEmail());
     }
     
     public void updateUser(User user)

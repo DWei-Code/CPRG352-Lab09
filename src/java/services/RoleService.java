@@ -13,6 +13,6 @@ public class RoleService
     
     public Role[] getAll() throws Exception
     {
-        return roleDB.get(WILD_CARD);
+        return null;//return roleDB.get(WILD_CARD);
     }
 }
