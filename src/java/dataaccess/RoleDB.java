@@ -14,7 +14,7 @@ public class RoleDB {
             return null;
         }
         
-        public List <Role> getAll(String owner) throws Exception {
+        public List <Role> getAll() throws Exception {
         List<Role> roles = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
