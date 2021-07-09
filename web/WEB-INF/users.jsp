@@ -29,10 +29,15 @@
             </div>
 
             <div id="manageUserDiv">
-                <h1>Manage Users</h1>
+                <h1>Manage Users</h1> // table
                 <ul>
                     <c:forEach items="${user}" var="user">
-                        <li><a href="user?action=view&amp;userId=${user.noteId}">${user.title}</a><br></li>
+                        <li>${user.email}</li>
+                        <li>${user.firstName}</li>
+                        <li>${user.lastName}</li>
+                        <li>${role.roleName}</li> // roledb data database
+                       EDIT
+                       DELETE
                         </c:forEach>
                 </ul>
             </div>

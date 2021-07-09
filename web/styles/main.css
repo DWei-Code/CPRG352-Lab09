@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    background-image: url(tobias-fischer.jpg);
+    background-image: url("/Lab7_JDBC/images/tobias-fischer.jpg");
     color: white;
     background-size: cover;
     background-repeat: no-repeat;
