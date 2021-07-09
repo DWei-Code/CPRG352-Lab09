@@ -20,26 +20,34 @@
                 <input type="text" name="user_firstname" value="${firstname_attribute}" placeholder="First Name"><br>
                 <input type="text" name="user_lastname" value="${lastname_attribute}" placeholder="Last Name"><br>
                 <input type="text" name="user_password" value="${password_attribute}" placeholder="Password"><br>
-                <select name="user_roles" id="userRoles">
-                    <option value="system_admin">System Admin</option>
-                    <option value="regular_user">Regular User</option>
-                    <option value="company_admin">Company Admin</option>
+                <select name="add_user_roles" id="add_userRoles">
+                    <option value="add_system_admin">System Admin</option>
+                    <option value="add_regular_user">Regular User</option>
+                    <option value="add_company_admin">Company Admin</option>
                 </select><br>
                 <input type="submit" value="Save">
             </div>
 
             <div id="manageUserDiv">
-                <h1>Manage Users</h1> // table
-                <ul>
+                <h1>Manage Users</h1>
+                <table>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
                     <c:forEach items="${user}" var="user">
-                        <li>${user.email}</li>
-                        <li>${user.firstName}</li>
-                        <li>${user.lastName}</li>
-                        <li>${role.roleName}</li> // roledb data database
-                       EDIT
-                       DELETE
-                        </c:forEach>
-                </ul>
+                        <tr>
+                            <td>${user.firstName}</td>
+                            <td>${user.lastName}</td>
+                            <td><a href="edit">Edit</a></td>
+                            <td><a href="delete">Delete</a></td>
+                        </tr>
+                    </c:forEach>
+
+                </table>
             </div>
 
             <div id="editUserDiv">
@@ -49,9 +57,9 @@
                 <input type="text" name="user_lastname" value="${lastname_attribute}"><br>
                 <input type="text" name="user_password" value="${password_attribute}"><br>
                 <select name="edit_user_roles" id="editUserRoles">
-                    <option value="systetruem_admin">System Admin</option>
-                    <option value="regular_user">Regular User</option>
-                    <option value="company_admin">Company Admin</option>
+                    <option value="edit_system_admin">System Admin</option>
+                    <option value="edit_regular_user">Regular User</option>
+                    <option value="edit_company_admin">Company Admin</option>
                 </select><br>
                 <input type="submit" value="Save"><br>
                 <input type="submit" value="Cancel">
