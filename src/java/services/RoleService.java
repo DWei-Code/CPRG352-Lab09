@@ -2,17 +2,18 @@ package services;
 
 import models.*;
 import dataaccess.*;
+import java.util.*;
 
 public class RoleService
 {
-    private static final
-    String WILD_CARD = "*";
-    
-    private
-    RoleDB roleDB = new RoleDB();
-    
-    public Role[] getAll() throws Exception
+    /**
+     * Gets all roles from the Role data storage
+     * @return All roles
+     * @throws Exception Thrown when roles cannot be retrieved
+     */
+    public List<Role> getAll() throws Exception
     {
-        return null;//return roleDB.get(WILD_CARD);
+        RoleDB roleDB = new RoleDB();
+        return roleDB.getAll();
     }
 }
