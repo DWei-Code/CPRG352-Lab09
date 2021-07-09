@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    background-image: url(tobias-fischer.jpg);
+    color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 500px;
+    font-family: 'Lora', serif;
+}
+
+div#addUserDiv {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+}
+
+div#manageUserDiv {
+    position: absolute;
+    left: 35%;
+    top: 10%;
+}
+
+div#editUserDiv {
+    position: absolute;
+    right: 15%;
+    top: 10%;
+}
