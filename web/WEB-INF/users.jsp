@@ -45,8 +45,8 @@
                             <td name="tableEmail">${user.email}</td>
                             <td name="tableFirstName">${user.firstName}</td>
                             <td name="tableLastName">${user.lastName}</td>
-                            <td name="action" value="edit"><a href="edit">Edit</a></td>
-                            <td name="action" value="delete"><a href="delete">Delete</a></td>
+                            <td name="action" value="edit"><input type="submit" value="edit" name="action"></td>
+                            <td name="action" value="delete"><input type="submit" value="delete" name="action"></td>
                         </tr>
                     </c:forEach>
 
@@ -55,14 +55,14 @@
 
             <div id="editUserDiv">
                 <h1>Edit User</h1>
-                <input type="text" name="saveuser_email" value="${email_attribute}"><br>
-                <input type="text" name="saveuser_firstname" value="${firstname_attribute}"><br>
-                <input type="text" name="saveuser_lastname" value="${lastname_attribute}"><br>
-                <input type="text" name="saveuser_password" value="${password_attribute}"><br>
+                <input type="text" name="saveuser_email" value="${editEmail}"><br>
+                <input type="text" name="saveuser_firstname" value="${editFirstName}"><br>
+                <input type="text" name="saveuser_lastname" value="${editLastName}"><br>
+                <input type="text" name="saveuser_password" value="${editPassword}"><br>
                 <select name="edit_user_roles" id="editUserRoles">
-                    <option value="edit_system_admin">System Admin</option>
-                    <option value="edit_regular_user">Regular User</option>
-                    <option value="edit_company_admin">Company Admin</option>
+                    <option value="System Admin">System Admin</option>
+                    <option value="Regular User">Regular User</option>
+                    <option value="Company Admin">Company Admin</option>
                 </select><br>
                 <input type="submit" value="Save" name="action"><br>
                 <input type="submit" value="Cancel" name="action">
