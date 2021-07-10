@@ -25,13 +25,15 @@
                     <option value="add_regular_user">Regular User</option>
                     <option value="add_company_admin">Company Admin</option>
                 </select><br>
-                <input type="submit" value="Save">
+                <input type="submit" value="Add" name="action">
+               
             </div>
 
             <div id="manageUserDiv">
                 <h1>Manage Users</h1>
                 <table>
                     <tr>
+                        <th>Email</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Edit</th>
@@ -40,10 +42,11 @@
 
                     <c:forEach items="${user}" var="user">
                         <tr>
-                            <td>${user.firstName}</td>
-                            <td>${user.lastName}</td>
-                            <td><a href="edit">Edit</a></td>
-                            <td><a href="delete">Delete</a></td>
+                            <td name="tableEmail">${user.email}</td>
+                            <td name="tableFirstName">${user.firstName}</td>
+                            <td name="tableLastName">${user.lastName}</td>
+                            <td name="action" value="edit"><a href="edit">Edit</a></td>
+                            <td name="action" value="delete"><a href="delete">Delete</a></td>
                         </tr>
                     </c:forEach>
 
@@ -52,17 +55,18 @@
 
             <div id="editUserDiv">
                 <h1>Edit User</h1>
-                <input type="text" name="user_email" value="${email_attribute}"><br>
-                <input type="text" name="user_firstname" value="${firstname_attribute}"><br>
-                <input type="text" name="user_lastname" value="${lastname_attribute}"><br>
-                <input type="text" name="user_password" value="${password_attribute}"><br>
+                <input type="text" name="saveuser_email" value="${email_attribute}"><br>
+                <input type="text" name="saveuser_firstname" value="${firstname_attribute}"><br>
+                <input type="text" name="saveuser_lastname" value="${lastname_attribute}"><br>
+                <input type="text" name="saveuser_password" value="${password_attribute}"><br>
                 <select name="edit_user_roles" id="editUserRoles">
                     <option value="edit_system_admin">System Admin</option>
                     <option value="edit_regular_user">Regular User</option>
                     <option value="edit_company_admin">Company Admin</option>
                 </select><br>
-                <input type="submit" value="Save"><br>
-                <input type="submit" value="Cancel">
+                <input type="submit" value="Save" name="action"><br>
+                <input type="submit" value="Cancel" name="action">
+                
             </div>
         </form>
     </body>
