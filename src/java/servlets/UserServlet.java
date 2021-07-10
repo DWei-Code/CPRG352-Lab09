@@ -26,7 +26,6 @@ public class UserServlet extends HttpServlet {
             HttpSession session = request.getSession();
             // using get all method from user services
             List<User> users = us.getAll();
-//            System.out.println(users.size());
             request.setAttribute("user", users);
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,8 +45,20 @@ public class UserServlet extends HttpServlet {
 
         // get an action from the JSP
         String action = request.getParameter("action");
+
         // get all the attributes of a user thats about to be added
         String email = request.getParameter("tableEmail");
+        if (action.indexOf("edit") == 0) {
+            String[] strings = action.split(" ");
+            action = strings[0];
+            email = strings[1];
+        }
+
+        if (action.indexOf("delete") == 0) {
+            String[] strings = action.split(" ");
+            action = strings[0];
+            email = strings[1];
+        }
         String firstName = request.getParameter("tableFirstName");
         String lastName = request.getParameter("tableLastName");
 //        String password = request.getParameter("standin pass param");
@@ -112,8 +123,10 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "edit":
                     User editUser = new User();
+                    System.out.println("EMAIL: " + email);
                     editUser = us.get(email);
                     String editEmail = editUser.getEmail();
+
                     String editFirstName = editUser.getFirstName();
                     String editLastName = editUser.getLastName();
                     String editPassword = editUser.getPassword();
@@ -128,6 +141,16 @@ public class UserServlet extends HttpServlet {
                             roleString = "company admin";
                     }
 
+                    try {
+                        // using get all method from user services
+                        List<User> users = us.getAll();
+                        request.setAttribute("user", users);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, e);
+                        System.err.println("Error Occured retrieving user data");
+                    }
+
                     request.setAttribute("editEmail", editEmail);
                     request.setAttribute("editFirstName", editFirstName);
                     request.setAttribute("editLastName", editLastName);
@@ -138,6 +161,7 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "delete":
                     us.delete(email);
+                    response.sendRedirect("user");
                     break;
                 case "Save":
                     ArrayList<String> nullCheckerSave = new ArrayList<>();
@@ -190,8 +214,5 @@ public class UserServlet extends HttpServlet {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, e);
             System.err.println("Error Occured carrying out action:" + action);
         }
-
-//        getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
     }
-
 }

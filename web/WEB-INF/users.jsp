@@ -42,11 +42,11 @@
 
                     <c:forEach items="${user}" var="user">
                         <tr>
-                            <td name="tableEmail">${user.email}</td>
-                            <td name="tableFirstName">${user.firstName}</td>
-                            <td name="tableLastName">${user.lastName}</td>
-                            <td name="action" value="edit"><input type="submit" value="edit" name="action"></td>
-                            <td name="action" value="delete"><input type="submit" value="delete" name="action"></td>
+                            <td name="tableEmail" value="${user.email}">${user.email}</td>
+                            <td name="tableFirstName" value="${user.firstName}">${user.firstName}</td>
+                            <td name="tableLastName" value="${user.lastName}">${user.lastName}</td>
+                            <td name="action" value="edit"><button type="submit" value="edit ${user.email}" name="action">Edit</button></td>
+                            <td name="action" value="delete"><button type="submit" value="delete ${user.email}" name="action">Delete</button></td>
                         </tr>
                     </c:forEach>
 

@@ -83,6 +83,7 @@ public class UserDB {
         PreparedStatement ps = null;
         String sql = "INSERT INTO user (email, active, first_name, last_name, password, role) VALUES (?, ?, ?, ?, ?, ?)";
         
+        System.out.println("ROLE: " + user.getRole());
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, user.getEmail());
@@ -124,7 +125,7 @@ public class UserDB {
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
         PreparedStatement ps = null;
-        String sql = "DELETE FROM note WHERE email=?";
+        String sql = "DELETE FROM user WHERE email=?";
         
         try {
             ps = con.prepareStatement(sql);
