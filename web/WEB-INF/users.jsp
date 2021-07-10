@@ -12,7 +12,7 @@
         <title>Users Page</title>
     </head>
     <body>
-        <form method="post" action="user">
+        <form method="POST" action="">
 
             <div id="addUserDiv">
                 <h1>Add User</h1>
@@ -21,9 +21,9 @@
                 <input type="text" name="user_lastname" value="${lastname_attribute}" placeholder="Last Name"><br>
                 <input type="text" name="user_password" value="${password_attribute}" placeholder="Password"><br>
                 <select name="add_user_roles" id="add_userRoles">
-                    <option value="add_system_admin">System Admin</option>
-                    <option value="add_regular_user">Regular User</option>
-                    <option value="add_company_admin">Company Admin</option>
+                    <option value="System Admin">System Admin</option>
+                    <option value="Regular User">Regular User</option>
+                    <option value="Company Admin">Company Admin</option>
                 </select><br>
                 <input type="submit" value="Add" name="action">
                

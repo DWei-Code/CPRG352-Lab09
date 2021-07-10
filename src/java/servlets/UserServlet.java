@@ -75,8 +75,20 @@ public class UserServlet extends HttpServlet {
                         if (nullChecker.get(i) == null || nullChecker.get(i) == "") {
                             String updateMessage = "Please enter all fields to add a new user";
                             request.setAttribute("userMessage", updateMessage);
-                            response.sendRedirect("user");
-                            return;
+//                            response.sendRedirect("user");
+//                            return;
+                            try {
+                                // using get all method from user services
+                                List<User> users = us.getAll();
+
+                                request.setAttribute("user", users);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, e);
+                                System.err.println("Error Occured retrieving user data");
+                            }
+
+                            getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
                         }
                     }
                     // switch the role ID to int for user creation
@@ -84,10 +96,13 @@ public class UserServlet extends HttpServlet {
                     switch (newRole.toLowerCase()) {
                         case "system admin":
                             roleId = 1;
+                            break;
                         case "regular user":
                             roleId = 2;
+                            break;
                         case "company admin":
                             roleId = 3;
+                            break;
                     }
                     isActive = true;
 
@@ -151,11 +166,14 @@ public class UserServlet extends HttpServlet {
                     int roleIdSave = 0;
                     switch (saveRole.toLowerCase()) {
                         case "system admin":
-                            roleIdSave  = 1;
+                            roleIdSave = 1;
+                            break;
                         case "regular user":
-                            roleIdSave  = 2;
+                            roleIdSave = 2;
+                            break;
                         case "company admin":
-                            roleIdSave  = 3;
+                            roleIdSave = 3;
+                            break;
                     }
                     isActive = true;
 
