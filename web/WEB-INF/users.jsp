@@ -57,7 +57,7 @@
 
             <div id="editUserDiv">
                 <h1>Edit User</h1>
-                <input type="text" name="saveuser_email" value="${editEmail}"><br>
+                <input class="emailInput" type="text" name="saveuser_email" value="${editEmail}" readonly="readonly" tabindex="-1"><br>
                 <input type="text" name="saveuser_firstname" value="${editFirstName}"><br>
                 <input type="text" name="saveuser_lastname" value="${editLastName}"><br>
                 <input type="text" name="saveuser_password" value="${editPassword}"><br>
