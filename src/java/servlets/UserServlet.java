@@ -82,7 +82,7 @@ public class UserServlet extends HttpServlet {
                     nullChecker.add(newRole);
 
                     // all fields need to be entered before adding user
-                    for (int i = 0; i > nullChecker.size(); i++) {
+                    for (int i = 0; i < nullChecker.size(); i++) {
                         if (nullChecker.get(i) == null || nullChecker.get(i) == "") {
                             String updateMessage = "Please enter all fields to add a new user";
                             request.setAttribute("userMessage", updateMessage);
