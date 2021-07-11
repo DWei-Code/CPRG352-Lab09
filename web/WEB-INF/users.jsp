@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css2?family=Lora&family=Work+Sans:wght@200&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7eb48072cc.js" crossorigin="anonymous"></script>
         <title>Users Page</title>
     </head>
     <body>
@@ -26,14 +27,15 @@
                     <option value="Company Admin">Company Admin</option>
                 </select><br>
                 <input type="submit" value="Add" name="action">
+                <p>${userMessage}</p>
                
             </div>
 
             <div id="manageUserDiv">
-                <h1>Manage Users</h1>
+                <center><h1>Manage Users</h1></center>
                 <table>
                     <tr>
-                        <th>Email</th>
+                    <th>Email</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Edit</th>
@@ -45,8 +47,8 @@
                             <td name="tableEmail" value="${user.email}">${user.email}</td>
                             <td name="tableFirstName" value="${user.firstName}">${user.firstName}</td>
                             <td name="tableLastName" value="${user.lastName}">${user.lastName}</td>
-                            <td name="action" value="edit"><button type="submit" value="edit ${user.email}" name="action">Edit</button></td>
-                            <td name="action" value="delete"><button type="submit" value="delete ${user.email}" name="action">Delete</button></td>
+                            <td name="action" value="edit"><button type="submit" value="edit ${user.email}" name="action"><i class="fas fa-pen"></i></button></td>
+                            <td name="action" value="delete"><button type="submit" value="delete ${user.email}" name="action"><i class="fas fa-times"></i></button></td>
                         </tr>
                     </c:forEach>
 
