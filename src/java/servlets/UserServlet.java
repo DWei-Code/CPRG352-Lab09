@@ -76,8 +76,6 @@ public class UserServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        boolean isActive = false;
-
         try {
             switch (action) {
                 case "Add":
@@ -123,23 +121,20 @@ public class UserServlet extends HttpServlet {
 
         // all fields need to be entered before adding user
         for (int i = 0; i < nullChecker.size(); i++) {
-            if (nullChecker.get(i) == null || nullChecker.get(i) == "") {
+            if (nullChecker.get(i) == null || nullChecker.get(i).equals("")) {
+                System.out.println("EMPYT!!!!!!");
                 String updateMessage = "Please enter all fields to add a new user";
                 request.setAttribute("userMessage", updateMessage);
-//                            response.sendRedirect("user");
-//                            return;
+                
                 try {
                     request.setAttribute("user", users);
+                    getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
+                    return;
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                     Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, e);
                     System.err.println("Error Occured retrieving user data");
-                }
-
-                try {
-                    getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
-                } catch (Exception ex) {
-                    Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -149,7 +144,7 @@ public class UserServlet extends HttpServlet {
                 request.setAttribute("userMessage", "Email already exists. Please enter a unique email.");
                 request.setAttribute("user", users);
 
-                response.sendRedirect("user");
+                getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
                 return;
             }
         } catch (Exception exception) {
@@ -183,7 +178,6 @@ public class UserServlet extends HttpServlet {
     private void edit(HttpServletRequest request, HttpServletResponse response,
             UserService us, List<User> users, String email) {
         User editUser = new User();
-        System.out.println("EMAIL: " + email);
         try {
             editUser = us.get(email);
         } catch (Exception ex) {
