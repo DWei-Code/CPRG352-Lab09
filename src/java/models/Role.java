@@ -27,6 +27,19 @@ public class Role implements Serializable {
     public String getRoleName() {
         return roleName;
     }
+    
+    public String getRoleNameCapitalized()
+    {
+        String[] words = roleName.split(" ");
+        
+        StringBuffer sb = new StringBuffer();
+
+        for(int i=0; i<words.length; i++)
+        {
+            sb.append(Character.toUpperCase(words[i].charAt(0))).append(words[i].substring(1)).append(" ");
+        }          
+        return sb.toString().trim();
+    }
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;

@@ -16,4 +16,16 @@ public class RoleService
         RoleDB roleDB = new RoleDB();
         return roleDB.getAll();
     }
+    
+    public Role get(int roleID) throws Exception
+    {
+        RoleDB roleDB = new RoleDB();
+        return roleDB.get(roleID);
+    }
+    
+    public Role getByName(String roleName) throws Exception
+    {
+        RoleDB roleDB = new RoleDB();
+        return roleDB.getByName(roleName);
+    }
 }

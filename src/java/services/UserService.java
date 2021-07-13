@@ -6,6 +6,9 @@ import models.*;
 
 public class UserService
 {
+    private static final
+    String EMPTY = "";
+    
     /**
      * Retrieves an entry from the User data storage
      * @param email the Primary Key of the user to get
@@ -43,12 +46,34 @@ public class UserService
      * @param role The User's Role
      * @throws Exception Thrown when entry cannot be inserted
      */
-    public void insert(String email, boolean isActive, String firstName,
-                       String lastName, String password, int role)
+    public RequestStatus insert(String email, boolean isActive, String firstName,
+                       String lastName, String password, String roleID)
     throws Exception
     {
-        insert(new User(email, isActive, firstName,
-                               lastName, password, role));
+        if(MiscUtil.hasEmptyValues(new String[] { email, firstName, lastName, password, roleID }))
+        {
+            return RequestStatus.EMPTY_INPUT;
+        }
+        
+        if(!MiscUtil.stringIsNumber(roleID))
+        {
+            return RequestStatus.INVALID_ROLE;
+        }
+        System.out.println("ROLE: " + roleID);
+        RoleService roleService = new RoleService();
+        Role role = roleService.get(Integer.parseInt(roleID));
+        
+        if(role == null)
+        {
+            return RequestStatus.INVALID_ROLE;
+        }
+        
+        
+        UserDB userDB = new UserDB();
+        
+        userDB.insert(email, isActive, firstName, lastName, password, role.getRoleId());
+        
+        return RequestStatus.SUCCESS;
     }
     
     //---------------
@@ -60,8 +85,9 @@ public class UserService
      */
     public void insert(User user) throws Exception
     {
-        UserDB userDB = new UserDB();
-        userDB.insert(user);
+        insert(user.getEmail(), user.isActive(), user.getFirstName(),
+                user.getLastName(), user.getPassword(),
+                user.getRole().getRoleName());
     }
     
     //------------------------------
@@ -104,11 +130,32 @@ public class UserService
      * @param role The User's Role
      * @throws Exception Thrown when entry cannot be updated
      */
-    public void update(String email, boolean isActive, String firstName,
-                       String lastName, String password, int role)
+    public RequestStatus update(String email, boolean isActive, String firstName,
+                       String lastName, String password, String roleID)
     throws Exception
     {
-        update(new User(email, isActive, firstName, lastName, password, role));
+        if(MiscUtil.hasEmptyValues(new String[] { email, firstName, lastName, password, roleID }))
+        {
+            return RequestStatus.EMPTY_INPUT;
+        }
+        
+        if(!MiscUtil.stringIsNumber(roleID))
+        {
+            return RequestStatus.INVALID_ROLE;
+        }
+        
+        RoleService roleService = new RoleService();
+        Role role = roleService.get(Integer.parseInt(roleID));
+        
+        if(role == null)
+        {
+            return RequestStatus.INVALID_ROLE;
+        }
+        
+        UserDB userDB = new UserDB();
+        userDB.update(email, isActive, firstName, lastName, password, role.getRoleId());
+        
+        return RequestStatus.SUCCESS;
     }
     
     //---------------
@@ -120,7 +167,8 @@ public class UserService
      */
     public void update(User user) throws Exception
     {
-        UserDB userDB = new UserDB();
-        userDB.update(user);
+        update(user.getEmail(), user.isActive(), user.getFirstName(),
+                user.getLastName(), user.getPassword(),
+                user.getRole().getRoleName());
     }
 }

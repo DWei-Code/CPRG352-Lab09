@@ -10,13 +10,13 @@ public class User implements Serializable {
     private String lastName;
     // Not sure if this should be transient
     transient private String password;
-    private int role;
+    private Role role;
 
     public User() {
 
     }
 
-    public User(String email, boolean active, String firstName, String lastName, String password, int role) {
+    public User(String email, boolean active, String firstName, String lastName, String password, Role role) {
         this.email = email;
         this.active = active;
         this.firstName = firstName;
@@ -65,11 +65,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }
