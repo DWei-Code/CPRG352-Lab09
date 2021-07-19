@@ -98,7 +98,6 @@ public class UserService {
     public void delete(String email) throws Exception {
         User user = new User();
         user.setEmail(email);
-        System.out.print(user.getFirstName());
         delete(user);
     }
 

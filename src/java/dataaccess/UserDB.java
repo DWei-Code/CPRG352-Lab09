@@ -73,12 +73,14 @@ public class UserDB {
     public void delete(User user) throws Exception {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        System.out.println(user.getEmail());
+        String email = user.getEmail();
         
         try {
+            User deleteUser = em.find(User.class, email);
             trans.begin();
-            // merge for the system to see it as a entity
-            em.remove(em.merge(user));
-            em.merge(user);
+            // merge for the system to see it as a entity before deleting it
+            em.remove(em.merge(deleteUser));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

@@ -3,7 +3,7 @@ body {
     background-repeat: no-repeat;
     max-width: 500px;
     background-clip: border-box;
-    background-image: url("/Lab7_JDBC/images/jan-antonin.jpg");
+    background-image: url("/Lab9_JPA/images/jan-antonin.jpg");
     font-family: 'Lora', serif;
 }
 
