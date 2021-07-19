@@ -24,7 +24,7 @@
                 <input type="text" name="user_password" value="${password_attribute}" placeholder="Password"><br>
                 <select name="add_user_roles" id="add_userRoles">
                     <c:forEach items="${roles}" var="role">
-                        <option value="${role.getRoleId()}">${role.getRoleNameCapitalized()}</option>
+                        <option value="${role.getRoleId()}">${role.getRoleName()}</option>
                     </c:forEach>
                 </select><br>
                 <input type="submit" value="Add" name="action">
